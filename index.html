@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Red Hook Quantified Community</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1">
+    
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/templatemo_misc.css">
+	<link rel="stylesheet" href="css/templatemo_style.css">
+</head>
+<body>
+	
+	
+    <div class="responsive-navigation visible-sm visible-xs">
+        <a href="#" class="menu-toggle-btn">
+            <i class="fa fa-bars fa-2x"></i>
+        </a>
+        <div class="navigation responsive-menu">
+            <ul>
+                <li class="home"><a href="#templatemo">Home</a></li>
+	            <li class="about"><a href="#about">Measurements</a></li>
+	            <li class="services"><a href="#services">Red Hook Quantified Community</a></li>
+
+            </ul> 
+        </div> 
+    </div> 
+
+	<div id="main-sidebar" class="hidden-xs hidden-sm">
+		<div class="logo">
+			
+			
+		</div> 
+
+		<div class="navigation">
+	        <ul class="main-menu">
+	            <li class="home"><a href="#templatemo">Home</a></li>
+	            <li class="Measurements"><a href="#Measurements">Measurements</a></li>
+	            <li class="services"><a href="#services">Survey</a></li>
+				<li class="Map"><a href="#Map">Map</a></li>
+
+	        </ul>
+		</div> 
+
+	</div> 
+
+	<div id="main-content">
+
+		<div id="templatemo">
+			<div class="main-slider">
+				<div class="flexslider">
+					<ul class="slides">
+                    
+						<li>
+							<div class="slider-caption">
+								<h2>Red Hook Quantified Community</h2>								
+								<p>Quantifying a community is a crucial issue and it is important to measure it regarding to livable conditions of the society.  This project aims to define and drive research of how micro-geography sensor data can be leveraged to explore neighborhood dynamics. In this perspective, Reed Hook Area is selected for implementing the idea of Quantifying Community with the sensors</p>
+
+							</div>
+						</li>
+                        
+						                        
+					</ul>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="welcome-text">
+							
+							<p></p></div>
+					</div>
+				</div>
+			</div>
+		</div> 
+
+		<div class="container-fluid">
+
+			<div id="Measurements" class="section-content">
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h1>Measurements</h1>
+							
+							
+							<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="liquidFillGauge.js" language="JavaScript"></script>
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
+</head>
+<body>
+<svg id="fillgauge1" width="30%" height="250" title= "Temperature" onclick="gauge1.update(NewValue());">Temperature</svg>
+<svg id="fillgauge2" width="30%" height="250" onclick="gauge2.update(NewValue());"></svg>
+<svg id="fillgauge3" width="30%" height="250" onclick="gauge3.update(NewValue());"></svg>
+<svg id="fillgauge4" width="30%" height="250" onclick="gauge4.update(NewValue());"></svg>
+<!--<svg id="fillgauge5" width="19%" height="200" onclick="gauge5.update(NewValue());"></svg> -->
+<!-- <svg id="fillgauge6" width="19%" height="200" onclick="gauge6.update(NewValue());"></svg> -->
+<script language="JavaScript">
+    var gauge1 = loadLiquidFillGauge("fillgauge1", 40);
+    var config1 = liquidFillGaugeDefaultSettings();
+    config1.circleColor = "#FF7777";
+    config1.textColor = "#FF4444";
+    config1.waveTextColor = "#FFAAAA";
+    config1.waveColor = "#FFDDDD";
+    config1.circleThickness = 0.3;
+    config1.textVertPosition = 0.5;
+    config1.waveAnimateTime = 1000;
+	config1.displayTemp = true;
+	
+
+	
+    var gauge2= loadLiquidFillGauge("fillgauge2", 28, config1);
+    var config2 = liquidFillGaugeDefaultSettings();
+    config2.circleColor = "#D4AB6A";
+    config2.textColor = "#553300";
+    config2.waveTextColor = "#805615";
+    config2.waveColor = "#AA7D39";
+    config2.circleThickness = 0.1;
+    config2.circleFillGap = 0.2;
+    config2.textVertPosition = 0.8;
+    config2.waveAnimateTime = 2000;
+    config2.waveHeight = 0.3;
+    config2.waveCount = 1;
+	config2.displayTemp = true;
+	
+	
+    var gauge3 = loadLiquidFillGauge("fillgauge3", 60.1, config2);
+    var config3 = liquidFillGaugeDefaultSettings();
+    config3.textVertPosition = 0.8;
+    config3.waveAnimateTime = 5000;
+    config3.waveHeight = 0.15;
+    config3.waveAnimate = false;
+    config3.waveOffset = 0.25;
+    config3.valueCountUp = false;
+    
+	config3.displayTemp = true;
+	
+    var gauge4 = loadLiquidFillGauge("fillgauge4", 50, config3);
+    var config4 = liquidFillGaugeDefaultSettings();
+    config4.circleThickness = 0.15;
+    config4.circleColor = "#808015";
+    config4.textColor = "#555500";
+    config4.waveTextColor = "#FFFFAA";
+    config4.waveColor = "#AAAA39";
+    config4.textVertPosition = 0.8;
+    config4.waveAnimateTime = 1000;
+    config4.waveHeight = 0.05;
+    config4.waveAnimate = true;
+    config4.waveRise = false;
+    config4.waveHeightScaling = false;
+    config4.waveOffset = 0.25;
+    config4.textSize = 0.75;
+    config4.waveCount = 3;
+	config4.displayTemp = true;
+    var gauge5 = loadLiquidFillGauge("fillgauge5", 60.44, config4);
+    var config5 = liquidFillGaugeDefaultSettings();
+    config5.circleThickness = 0.4;
+    config5.circleColor = "#6DA398";
+    config5.textColor = "#0E5144";
+    config5.waveTextColor = "#6DA398";
+    config5.waveColor = "#246D5F";
+    config5.textVertPosition = 0.52;
+    config5.waveAnimateTime = 5000;
+    config5.waveHeight = 0;
+    config5.waveAnimate = false;
+    config5.waveCount = 2;
+    config5.waveOffset = 0.25;
+    config5.textSize = 1.2;
+    config5.minValue = 30;
+    config5.maxValue = 150
+    config5.displayPercent = false;
+    var gauge6 = loadLiquidFillGauge("fillgauge6", 120, config5);
+
+    function NewValue(){
+        if(Math.random() > .5){
+            return Math.round(Math.random()*100);
+        } else {
+            return (Math.random()*100).toFixed(1);
+        }
+    }
+</script>
+</body>
+</html>
+							
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="row">
+					<div class="col-md-4">
+
+							</div><p></p><br></br>
+							
+					<br></br><br></br>
+					<br></br><br></br><br></br>
+					
+					
+					</div> 
+					<div class="col-md-4">
+						<div class="member-item">
+							
+							
+						</div>
+					</div> 
+					
+		
+		</div>
+
+		
+<div class="container-fluid">		
+	
+			<div id="services" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h2>Survey</h2>
+							<br></br><br>
+							<p>Your ideas are important for us</p>
+							<br></br><br></br>
+						</div> 
+					</div> 
+				</div> 
+				<div class="row">
+					
+					
+					
+				</div> <!-- /.row -->
+				<div class="row our-skills">
+					<div class="col-md-8">
+						<p>
+							<br></br></p>				
+						<input type="button" style="background-color:#030303" onclick="location.href='https://nyu.qualtrics.com/SE/?SID=SV_74z0naPCSIuIaMJ';" value="Link to Survey" />
+						
+						<br></br><br></br><br></br>
+						</div>
+					
+				</div>
+			</div>--> 
+</div>
+			
+<div class="container-fluid">		
+	
+			<div id="Map" class="section-content">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="section-title">
+							<h2>Map</h2>
+						</div> 
+					</div> 
+				</div> 
+				<div class="row">
+					<div class="col-md-12">
+						<div class="map-holder">
+							<div class="google-map-canvas" id="map-canvas">
+                    		</div>
+						</div> <!-- /.map-holder -->
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->
+				<br></br><br></br>
+			</div>--> 
+</div>			
+
+			<div id="contact" class="section-content">
+				
+			</div> 
+
+		</div> 
+
+	
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery.singlePageNav.js"></script>
+	<script src="js/jquery.flexslider.js"></script> 
+	<script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/custom.js"></script>
+	<script>
+		
+
+        function initialize() {
+          var mapOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(40.675867, -74.009636)
+          };
+
+          var map = new google.maps.Map(document.getElementById('map-canvas'),
+              mapOptions);
+        }
+
+        function loadScript() {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
+              'callback=initialize';
+          document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+    </script>
+	
+</body>
+</html>
