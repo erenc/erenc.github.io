@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+    <!--
+      @import url("http://128.6.237.242/njapps/AssistME/www/html/assets/css/nav-styles.css");
+      @import url("http://128.6.237.242/njapps/AssistME/www/html/assets/css/table-styles.css");
+      @import url("http://128.6.237.242/njapps/AssistME/www/html/assets/bootstrap/css/bootstrap.css");
+      @import url("http://128.6.237.242/njapps/AssistME/www/html/assets/bootstrap/css/bootstrap-responsive.css");
+      @import url("http://128.6.237.242/njapps/AssistME/www/html/assets/customscroll/jquery.mCustomScrollbar.css");
+      @import url("http://128.6.237.242/njapps/AssistME/www/html/assets/css/smoothness/jquery-ui-1.10.1.custom.css");
+      -->
+      input[type="text"] {
+          width:40px;
+          margin:0px;
+      }
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://www.google.com/jsapi"></script>
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+    var WINDOW_WIDTH = $(window).width(); //browser width
+      var WINDOW_HEIGHT = $(window).height(); //browser height
+      var MAP_WIDTH = 0; //width of visible map (map not covered by panels)
+      var map_damage;
+      var map_permit;
+      var MAP_CENTER = new google.maps.LatLng(40.0,-74.65); //position that the main map centers on
+      var CURRENT_CENTER = MAP_CENTER; //current position of the main map
+      //The boundaries of New Jersey, used to prevent user from panning outside the state
+      var JERSEY_BOUNDS = new google.maps.LatLngBounds(
+        new google.maps.LatLng(38.796908,-75.675476), 
+        new google.maps.LatLng(41.418015,-73.643005)
+      );
+      var MINIMUM_ZOOM = 8; //The minimum zoom level a user can zoom out
+      var overlay = null; //A variable needed to help map measurements
+      var links = new google.maps.Data();
+     
+      var MARKERS = {district:[],runloc:[],charlie:[],incident:[]};
+      
+      var CURSOR_X = 0;
+      var CURSOR_Y = 0;
+      var CLICK_LATLNG = null;
+    function initialize(tab) {
+            var mapOptions = {
+              center: MAP_CENTER,
+              zoom: MINIMUM_ZOOM,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              disableDefaultUI:true,
+              mapTypeControl: true,
+              mapTypeControlOptions: {
+                  style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                  position: google.maps.ControlPosition.TOP_CENTER
+              },
+              streetViewControl: false,
+              streetViewControlOptions: {
+                  position: google.maps.ControlPosition.TOP_CENTER
+              }
+            };       
+            if (tab ==1)           
+            map_damage = new google.maps.Map(document.getElementById("damage_info_map"), mapOptions);
+            else if (tab==2)
+            map_permit = new google.maps.Map(document.getElementById("permit_info_map"), mapOptions);    
+        
+        /* get coord on mouse click
+        google.maps.event.addListener(map_permit, 'click', function(event) {
+        new google.maps.InfoWindow({
+          position: event.latLng,
+          content: event.latLng.toString() 
+        }).open(map_permit);
+        });
+        */
+                
+      }
+      
+      
+      function ajax(x) {                
+                $.ajax({
+                    url: "http://128.6.237.242/njapps/AssistME/www/html/helper_ajax2.php",
+                    type: "POST",
+                    dataType: 'json',
+                    cache: false,
+                    data: x,
+                    success: function(response, textStatus, jqXHR) {
+                        if (response.FAILED) {
+                            alert('problem');
+                            return;
+                        }
+                        
+                        if (x.update == 100) { //calculate total damage cost
+                            getDamageCost(response); //GeoJSON for the map
+                        } else if (x.update == 101) { //calculate permit cost
+                            getPermitCost(response);
+                        }                       
+                        
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log("The following error occured: "+textStatus,errorThrown);
+                    },
+                    complete: function() {
+                        
+                    }
+                });
+            }
+			
+//this code creates the links table 
+            
+    function generateLinksTable(){
+            var output = "<table id='permit_route_table' class='table table-bordered'><tr><th>Link #</th><th>SRI</th><th>Start MP</th><th>End MP</th></tr>";
+           
+            for (i=1; i<=9; i++){
+                output = output + "<tr><td>"+i+"</td><td id='link"+i+ "' ><select id='SRIList' style='width:120px;margin:0px;'><option value='0'>Select...</option><option value='00000001__'>00000001__</option><option value='00000003__'>00000003__</option><option value='00000004__'>00000004__</option><option value='00000005__'>00000005__</option><option value='00000007__'>00000007__</option><option value='00000009__'>00000009__</option><option value='00000010__'>00000010__</option><option value='00000012__'>00000012__</option><option value='00000013__'>00000013__</option><option value='00000015__'>00000015__</option><option value='00000017__'>00000017__</option><option value='00000018__'>00000018__</option><option value='00000019__'>00000019__</option><option value='00000020__'>00000020__</option><option value='00000021__'>00000021__</option><option value='00000022__'>00000022__</option><option value='00000023__'>00000023__</option><option value='00000024__'>00000024__</option><option value='00000026__'>00000026__</option><option value='00000027__'>00000027__</option><option value='00000028__'>00000028__</option><option value='00000029__'>00000029__</option><option value='00000030__'>00000030__</option><option value='00000031__'>00000031__</option><option value='00000032__'>00000032__</option><option value='00000033__'>00000033__</option><option value='00000034__'>00000034__</option><option value='00000035__'>00000035__</option><option value='00000036__'>00000036__</option><option value='00000037__'>00000037__</option><option value='00000038__'>00000038__</option><option value='00000040__'>00000040__</option><option value='00000041__'>00000041__</option><option value='00000042__'>00000042__</option><option value='00000044__'>00000044__</option><option value='00000045__'>00000045__</option><option value='00000046__'>00000046__</option><option value='00000047__'>00000047__</option><option value='00000048__'>00000048__</option><option value='00000049__'>00000049__</option><option value='00000050__'>00000050__</option><option value='00000052__'>00000052__</option><option value='00000053__'>00000053__</option><option value='00000054__'>00000054__</option><option value='00000055__'>00000055__</option><option value='00000056__'>00000056__</option><option value='00000057__'>00000057__</option><option value='00000059__'>00000059__</option><option value='00000062__'>00000062__</option><option value='00000063__'>00000063__</option><option value='00000064__'>00000064__</option><option value='00000066__'>00000066__</option><option value='00000067__'>00000067__</option><option value='00000068__'>00000068__</option><option value='00000070__'>00000070__</option><option value='00000071__'>00000071__</option><option value='00000072__'>00000072__</option><option value='00000073__'>00000073__</option><option value='00000076__'>00000076__</option><option value='00000077__'>00000077__</option><option value='00000078__'>00000078__</option><option value='00000079__'>00000079__</option><option value='00000080__'>00000080__</option><option value='00000081__'>00000081__</option><option value='00000082__'>00000082__</option><option value='00000083__'>00000083__</option><option value='00000087__'>00000087__</option><option value='00000088__'>00000088__</option><option value='00000090__'>00000090__</option><option value='00000091__'>00000091__</option><option value='00000093__'>00000093__</option><option value='00000094__'>00000094__</option><option value='00000095__'>00000095__</option><option value='00000109__'>00000109__</option><option value='00000120__'>00000120__</option><option value='00000122__'>00000122__</option><option value='00000124__'>00000124__</option><option value='00000129__'>00000129__</option><option value='00000130__'>00000130__</option><option value='00000133__'>00000133__</option><option value='00000138__'>00000138__</option><option value='00000139__'>00000139__</option><option value='00000140__'>00000140__</option><option value='00000143__'>00000143__</option><option value='00000147__'>00000147__</option><option value='00000152__'>00000152__</option><option value='00000154__'>00000154__</option><option value='00000156__'>00000156__</option><option value='00000157__'>00000157__</option><option value='00000159__'>00000159__</option><option value='00000161__'>00000161__</option><option value='00000162__'>00000162__</option><option value='00000163__'>00000163__</option><option value='00000166__'>00000166__</option><option value='00000167__'>00000167__</option><option value='00000168__'>00000168__</option><option value='00000171__'>00000171__</option><option value='00000172__'>00000172__</option><option value='00000173__'>00000173__</option><option value='00000175__'>00000175__</option><option value='00000179__'>00000179__</option><option value='00000181__'>00000181__</option><option value='00000182__'>00000182__</option><option value='00000183__'>00000183__</option><option value='00000184__'>00000184__</option><option value='00000185__'>00000185__</option><option value='00000187__'>00000187__</option><option value='00000195__'>00000195__</option><option value='00000202__'>00000202__</option><option value='00000206__'>00000206__</option><option value='00000208__'>00000208__</option><option value='00000278__'>00000278__</option><option value='00000280__'>00000280__</option><option value='00000284__'>00000284__</option><option value='00000287__'>00000287__</option><option value='00000295__'>00000295__</option><option value='00000322__'>00000322__</option><option value='00000324__'>00000324__</option><option value='00000347__'>00000347__</option><option value='00000413__'>00000413__</option><option value='00000439__'>00000439__</option><option value='00000440__'>00000440__</option><option value='00000444__'>00000444__</option><option value='00000445__'>00000445__</option><option value='00000446__'>00000446__</option><option value='00000495__'>00000495__</option><option value='00000676__'>00000676__</option><option value='00000700__'>00000700__</option></select></td> <td><input type='text' id='startmp"+i+"' ></td><td><input type='text' id='endmp"+i+"' ></td></tr>";                
+            }
+            output= output + "</table><button type='button' id='calculate' class='btn btn-default'>Calculate</button>";
+            $("#permit_route_table_container").html(output);
+            $("#calculate").click(function(){
+                   processLinks();
+            });
+    }
+	
+//this code creates the axle table     
+    
+	function generateAxleTable(){
+            var output = "<table id='axle_table' class='table table-bordered'> <tr> <th>Axle #</th> <th>Type</th> <th>Load(kips)</th> </tr> ";
+
+            for (i=1; i<=9; i++){
+                output = output + "<tr><td>"+i+"</td><td id='axle"+i+ "' >" + getAxleTypeDrop()+ "</td> <td><input type='text' id='load"+i+"' ></td></tr>";                
+            }
+            output= output + "</table>";
+
+            $("#axle_table_container").html(output);            
+    }
+	
+	
+	
+//this code creates the axle table dropdown
+    
+    function getAxleTypeDrop(){
+            var output =  "<select id='Axlelist' style='width:88px;margin:0px;'>";
+            output  = output+"<option value='0'>Select...</option>";
+            output = output+"<option value='Single'>Single</option>";
+            output = output+"<option value='Tandem'>Tandem</option>";
+            output = output+"<option value='Tridem'>Tridem</option>";
+            output = output+"<option value='Quad'>Quad</option>";
+            output = output+"</select>";
+            return output;
+    }
+	
+//this code calculate Jannies method
+    
+    function calculateESALs(){
+        var esal =0;
+        for (i=1; i<=9; i++) {
+            if($("#axle"+ i ).children().val() != '') {
+                if($("#axle"+ i ).children().val() == 'Single')
+                    esal= esal + 0.000004*Math.pow($("#load" + i ).val(),4.109);
+                else if($("#axle"+ i ).children().val() == 'Tandem')
+                    esal= esal + 0.0000009*Math.pow($("#load" + i ).val(),4.0612);
+                else if($("#axle"+ i ).children().val() == 'Tridem')
+                    esal= esal + 0.0000006*Math.pow($("#load" + i ).val(),3.8584);
+                else if($("#axle"+ i ).children().val() == 'Quad')
+                    esal= esal + 0.0000005*Math.pow($("#load" + i ).val(),3.6847);
+            }
+        }
+        return esal;
+    }
+	
+//this code makes calculation
+    function calculateGVW(){
+        var gvw =0;
+        for (i=1; i<=9; i++) {
+            if($("#axle"+ i ).children().val() != '') {
+                gvw = gvw + Number($("#load" + i ).val());
+            }
+        }
+        return gvw;
+    }
+
+//This code for end and starmap	
+	function processLinks(){
+       var link=[];
+       var startmp=[];
+       var endmp=[];
+       
+       var j=0;
+       for (i=1; i<=9; i++){
+           if($("#link"+ i ).children().val() != '' && $("#startmp" + i ).val() !='' && $("#endmp" + i ).val() != '' ) {
+               link[j]= $("#link"+ i ).children().val();
+               startmp[j]=$("#startmp" + i ).val();
+               endmp[j]= $("#endmp" + i ).val();
+               j++;
+           }               
+       }
+	   
+       var urlString = "links=" +  link.join(",")+ "&startmp=" + startmp.join(",") + "&endmp="+endmp.join(",");
+       //alert(urlString);
+       ajax({update:101, SRIS: link, STARTMPS: startmp, ENDMPS: endmp, GVW:calculateGVW(), ESAL:calculateESALs()});
+       loadLinks(urlString, map_permit);
+    }
+	
+//This calculate permit and damage costs	
+    
+    function getPermitCost(response){
+    var cost = response;
+    var output = "<table id='permit_link_table' class='table table-bordered'><tr><th>Miles</th><th># of Bridges</th><th>Pavement Cost ($)</th><th>Bridge Cost ($)</th><th>Total Cost ($)</th></tr>"+
+                 "<tr><td>"+cost['pav_miles']+"</td><td>"+cost['br_cnt']+"</td><td>"+cost['pav']+"</td><td>"+cost['br']+"</td><td>"+Math.round((cost['pav']+cost['br'])*100)/100+"</td></tr></table>";
+    $("#permit_info_table_container").html(output);               
+    }
+    function getDamageCost(response) {
+    var cost = response;
+    var output = "<table id='damage_info_table' class='table table-bordered'><tr><th colspan='3'>Pavement Cost</th><th colspan='3'>Bridge Cost</th><th colspan='2'>Unit Overweight Costs</th></tr>"+
+                 "<tr><td>Miles</td><td>Total ($)</td><td>Overweight ($)</td><td># of Bridges</td><td>Total ($)</td><td>Overweight ($)</td><td>Per Ton ($)</td><td>Per Mile ($)</td></tr>"+
+                 "<tr><td>"+cost['pav_miles']+"</td><td>"+cost['pav_total']+"</td><td>"+cost['pav_over']+"</td><td>"+cost['br_cnt']+"</td><td>"+cost['br_total']+"</td><td>"+cost['br_over']+"</td><td>"+cost['perton']+"</td><td>"+cost['permile']+"</td></tr></table>";      
+    $("#damage_info_table_container").html(output);    
+    }
+	
+	
+	
+    function loadLinks_old(sri){
+       links.setMap(null);       
+       links =  new google.maps.Data({map:map_damage});
+       //Load mapdata via geoJson
+       
+       links.loadGeoJson('http://128.6.237.242/njapps/AssistME/www/html/getjson.php?option=1&sri='+sri);        
+       //links.loadGeoJson('http://127.0.0.1:5000/njapps/AssistME/www/html/getjson.php?option=1&sri='+sri);
+        //var features = map_damage.data.loadGeoJson('http://127.0.0.1:5000/njapps/sandbox/getjson.php?startmp=0&endmp=110&sri='+sri); 
+       // Set the stroke width, and fill color for each polygon
+        var featureStyle = {
+        fillColor: '#ADFF2F',
+        fillOpacity: 0.1,
+        strokeColor: '#ADFF2F',
+        strokeWeight:5
+        };
+        links.setStyle(featureStyle);
+        links.setMap(map_damage);
+        
+        
+        // zoom to show all the features
+        var bounds = new google.maps.LatLngBounds();
+        links.addListener('addfeature', function (e) {
+        processPoints(e.feature.getGeometry(), bounds.extend, bounds);
+        map_damage.fitBounds(bounds);
+    });     
+    }
+    
+    function loadLinks(urlString,map){
+        links.setMap(null);       
+       links =  new google.maps.Data({map:map});
+       //Load mapdata via geoJson
+       if (map == map_damage) {
+           links.loadGeoJson('http://128.6.237.242/njapps/AssistME/www/html/getjson.php?option=1&sri='+urlString);
+       }
+       else {
+           links.loadGeoJson('http://128.6.237.242/njapps/AssistME/www/html/getjson.php?'+urlString);
+       }           
+       
+        var featureStyle = {
+        fillColor: '#ADFF2F',
+        fillOpacity: 0.1,
+        strokeColor: '#ADFF2F',
+        strokeWeight:5
+        };
+        links.setStyle(featureStyle);
+        links.setMap(map);
+        
+        
+        // zoom to show all the features
+        var bounds = new google.maps.LatLngBounds();
+        links.addListener('addfeature', function (e) {
+        processPoints(e.feature.getGeometry(), bounds.extend, bounds);
+        map.fitBounds(bounds);
+    });
+        
+    }
+    
+    
+    
+    function processPoints(geometry, callback, thisArg) {
+    if (geometry instanceof google.maps.LatLng) {
+        callback.call(thisArg, geometry);
+    } else if (geometry instanceof google.maps.Data.Point) {
+        callback.call(thisArg, geometry.get());
+    } else {
+        geometry.getArray().forEach(function (g) {
+            processPoints(g, callback, thisArg);
+        });
+    }
+}
+            
+    $(document).ready(function() {
+        $('#permit_tab').on('shown', function (e) { 
+            initialize(2); // google map init function
+            generateLinksTable();
+            generateAxleTable();
+        //google.maps.event.trigger(map, 'resize'); maybe this is enough???
+         });
+        $("#damage_tab").click(function(){
+             $("#f").html("");
+         });
+         $("#permit_tab").click(function(){
+             $("#damage_info_table_container").html("");
+         });
+        
+        $("#SRIList").change(function(){
+            loadLinks($(this).val(),map_damage);
+            ajax({update:100,SRI:$(this).val()});
+        });
+    });
+
+</script>
+</head>
+ 
+<body onload="initialize(1)" bgcolor="#FF0000">
+<div class="container">
+ 
+<!-------->
+<div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a id="damage_tab" href="#damage" data-toggle="tab">Main Map</a></li>
+        <li ><a id="permit_tab" href="#permit" data-toggle="tab">Life Cycle Cost</a></li>
+
+    </ul>
+    <div id="my-tab-content" class="tab-content" >
+        <div class="tab-pane active" id="damage" style="width:100%">
+			<div style="text-align:center">SRI: <select id='SRIList' style='width:120px;margin:0px;'><option value='0'>Select...</option><option value='00000001__'>00000001__</option><option value='00000003__'>00000003__</option><option value='00000004__'>00000004__</option><option value='00000005__'>00000005__</option><option value='00000007__'>00000007__</option><option value='00000009__'>00000009__</option><option value='00000010__'>00000010__</option><option value='00000012__'>00000012__</option><option value='00000013__'>00000013__</option><option value='00000015__'>00000015__</option><option value='00000017__'>00000017__</option><option value='00000018__'>00000018__</option><option value='00000019__'>00000019__</option><option value='00000020__'>00000020__</option><option value='00000021__'>00000021__</option><option value='00000022__'>00000022__</option><option value='00000023__'>00000023__</option><option value='00000024__'>00000024__</option><option value='00000026__'>00000026__</option><option value='00000027__'>00000027__</option><option value='00000028__'>00000028__</option><option value='00000029__'>00000029__</option><option value='00000030__'>00000030__</option><option value='00000031__'>00000031__</option><option value='00000032__'>00000032__</option><option value='00000033__'>00000033__</option><option value='00000034__'>00000034__</option><option value='00000035__'>00000035__</option><option value='00000036__'>00000036__</option><option value='00000037__'>00000037__</option><option value='00000038__'>00000038__</option><option value='00000040__'>00000040__</option><option value='00000041__'>00000041__</option><option value='00000042__'>00000042__</option><option value='00000044__'>00000044__</option><option value='00000045__'>00000045__</option><option value='00000046__'>00000046__</option><option value='00000047__'>00000047__</option><option value='00000048__'>00000048__</option><option value='00000049__'>00000049__</option><option value='00000050__'>00000050__</option><option value='00000052__'>00000052__</option><option value='00000053__'>00000053__</option><option value='00000054__'>00000054__</option><option value='00000055__'>00000055__</option><option value='00000056__'>00000056__</option><option value='00000057__'>00000057__</option><option value='00000059__'>00000059__</option><option value='00000062__'>00000062__</option><option value='00000063__'>00000063__</option><option value='00000064__'>00000064__</option><option value='00000066__'>00000066__</option><option value='00000067__'>00000067__</option><option value='00000068__'>00000068__</option><option value='00000070__'>00000070__</option><option value='00000071__'>00000071__</option><option value='00000072__'>00000072__</option><option value='00000073__'>00000073__</option><option value='00000076__'>00000076__</option><option value='00000077__'>00000077__</option><option value='00000078__'>00000078__</option><option value='00000079__'>00000079__</option><option value='00000080__'>00000080__</option><option value='00000081__'>00000081__</option><option value='00000082__'>00000082__</option><option value='00000083__'>00000083__</option><option value='00000087__'>00000087__</option><option value='00000088__'>00000088__</option><option value='00000090__'>00000090__</option><option value='00000091__'>00000091__</option><option value='00000093__'>00000093__</option><option value='00000094__'>00000094__</option><option value='00000095__'>00000095__</option><option value='00000109__'>00000109__</option><option value='00000120__'>00000120__</option><option value='00000122__'>00000122__</option><option value='00000124__'>00000124__</option><option value='00000129__'>00000129__</option><option value='00000130__'>00000130__</option><option value='00000133__'>00000133__</option><option value='00000138__'>00000138__</option><option value='00000139__'>00000139__</option><option value='00000140__'>00000140__</option><option value='00000143__'>00000143__</option><option value='00000147__'>00000147__</option><option value='00000152__'>00000152__</option><option value='00000154__'>00000154__</option><option value='00000156__'>00000156__</option><option value='00000157__'>00000157__</option><option value='00000159__'>00000159__</option><option value='00000161__'>00000161__</option><option value='00000162__'>00000162__</option><option value='00000163__'>00000163__</option><option value='00000166__'>00000166__</option><option value='00000167__'>00000167__</option><option value='00000168__'>00000168__</option><option value='00000171__'>00000171__</option><option value='00000172__'>00000172__</option><option value='00000173__'>00000173__</option><option value='00000175__'>00000175__</option><option value='00000179__'>00000179__</option><option value='00000181__'>00000181__</option><option value='00000182__'>00000182__</option><option value='00000183__'>00000183__</option><option value='00000184__'>00000184__</option><option value='00000185__'>00000185__</option><option value='00000187__'>00000187__</option><option value='00000195__'>00000195__</option><option value='00000202__'>00000202__</option><option value='00000206__'>00000206__</option><option value='00000208__'>00000208__</option><option value='00000278__'>00000278__</option><option value='00000280__'>00000280__</option><option value='00000284__'>00000284__</option><option value='00000287__'>00000287__</option><option value='00000295__'>00000295__</option><option value='00000322__'>00000322__</option><option value='00000324__'>00000324__</option><option value='00000347__'>00000347__</option><option value='00000413__'>00000413__</option><option value='00000439__'>00000439__</option><option value='00000440__'>00000440__</option><option value='00000444__'>00000444__</option><option value='00000445__'>00000445__</option><option value='00000446__'>00000446__</option><option value='00000495__'>00000495__</option><option value='00000676__'>00000676__</option><option value='00000700__'>00000700__</option></select></div><br>
+			<div id="damage_info_map_container" style="margin-left:auto; margin-right:auto;width:1000">
+			<!--<div id="damage_info_map_container" style="margin-left:50px; margin-right:auto;width:500px">-->
+            <div id="damage_info_map" style="margin-left:auto; margin-right:auto;width:1100px; height:500px;"></div>
+            </div><br>
+            <div id="damage_info_table_container"  style="margin-left:auto; margin-right:auto; width:350px;">     
+            </div>
+        </div>
+		
+        <div class="tab-pane" id="permit" style="width:100%">
+            <div style="width: 100%; overflow: hidden;">
+                
+            <!--    
+                <div id="vehicle" style="border-style:solid;border-color:#cccccc; width:350px;margin-left:10px;margin-bottom: -25px;">
+                    <div style="margin-left:15px;">
+                    Vehicle Class 
+                    <select id="class" style="width:60px;margin:4px;">
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;GVW <input type="text" id="gvw"> kips
+                </div>
+                </div><br>
+            -->
+            <div id="container" style="overflow:hidden; "> 
+            <div id="axle_table_container"  style="float:left; width:250px;margin:10px;"></div>
+            <div id="permit_info_map_container" style="float:right; width:500px;margin:10px;">
+            <div id="permit_info_map" style="width:500px; height:500px;"></div>
+            </div>
+            <div id="permit_route_table_container"  style="float:left; width:150px;margin:10px;"></div> 
+            </div>
+               
+            <div id="permit_info_table_container"  style="margin-left:auto; margin-right:auto; width:650px;">     
+            </div>
+            </div>
+        </div>        
+    </div>
+</div>
+ 
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>    
+</div> <!-- container -->
+ 
+ 
+<script src='http://128.6.237.242/njapps/AssistME/www/html/assets/bootstrap/js/bootstrap.js'></script>
+    
+ 
+</body>
+</html>
