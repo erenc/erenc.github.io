@@ -13,7 +13,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 
     <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
@@ -69,7 +68,6 @@
                     <li>
                         <a class="page-scroll" href="#team">Team</a>
                     </li>
-					
                    
 					
                 </ul>
@@ -182,16 +180,28 @@ $(".GaugeMeter").gaugeMeter();
 </script>
 
 </body>
-<section id="map">
-
 </html>
-
-            
-<div id="map"></div>
-	</div>
-
+     
         </div>		
         </div>
+    </section>
+<section id="map">
+<div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat:40.675867, lng: -74.009636},
+          zoom: 14
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9aQaS1-cNjnxLIze1QsH4qEqHR-DrFyU&callback=initMap"
+    async defer></script>
+
+</section>			
+	
+	
 
     <!-- About Section -->
     <section id="about">
@@ -279,8 +289,6 @@ $(".GaugeMeter").gaugeMeter();
            
         </div>
     </section>
-</section>
-
 
     <footer>
         <div class="container">
@@ -312,44 +320,6 @@ $(".GaugeMeter").gaugeMeter();
 
     <!-- Custom Theme JavaScript -->
     <script src="js/agency.js"></script>
-	
-	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-
- <script>
-		var sensors = new L.LayerGroup();
-
-		L.marker([40.677056, -74.004446]).bindPopup('Red Hook Initiative').addTo(sensors),
-		L.marker([40.679140, -74.012249]).bindPopup('Pioneer Works').addTo(sensors),
-		L.marker([40.680804, -74.010533]).bindPopup('Tech Lab').addTo(sensors);
-		
-
-
-	    var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZWMyOTg2IiwiYSI6ImNpcHFrM2ZpdjA2amNmaW5vNnJrOWQwODkifQ.sAvaksbVUTooTGY-ez9rUw';
-
-	    var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
-		    streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
-
-		var map = L.map('map', {
-			center: [40.677, -74.009],
-			zoom: 14,
-			layers: [grayscale, sensors]
-		});
-
-		var baseLayers = {
-			"Grayscale": grayscale,
-			"Streets": streets
-		};
-
-		var overlays = {
-			"Cities": cities
-		};
-
-		L.control.layers(baseLayers, overlays).addTo(map);
-	</script>
 
 	
 </body>
