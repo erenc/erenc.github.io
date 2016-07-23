@@ -11,26 +11,28 @@
 
     <title>Red Hook Quantified Community</title>
 
-<!-- Call required/dependent libraries or sources  -->
+    <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 
-<!-- Custom CSS -->
+    <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
 
-<!-- Custom Fonts -->
+    <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-
-
-<!-- Define components in Web Site -->
-
 
 <body id="page-top" class="index">
 
@@ -124,21 +126,34 @@
 		<li ><a href="#tabs-1" style="font-size: 12px">Temperature</a></li>
 		<li ><a href="#tabs-2"  style="font-size: 12px">Humidity</a></li>
 		<li ><a href="#tabs-3"  style="font-size: 12px">Air Pressure</a></li>
-		<li ><a href="#tabs-4"  style="font-size: 12px">Luminosity</a></li>
+		<li ><a href="#tabs-4"  style="font-size: 12px">Lux</a></li>
 		<li ><a href="#tabs-5"  style="font-size: 12px">Dust</a></li>
 		<li ><a href="#tabs-6"  style="font-size: 12px">Noise</a></li>
 	</ul>
 	<div id="tabs-1" style="height: 300px">
-		<div id="chartContainer1" style="height: 300px; width: 100%;float:left"></div>
-		
+		<div id="chartContainer1" style="height: 300px; width: 88%;float:left"></div>
+		<div style="height: 300px; width: 12%; float:right; margin: 0px">
+			<div class="panel">
+				<p style="font-size:80%;margin-left: 15px; margin-top: 50px">
+				
+				Temperature values are represented in Celsius Unit. These measurements are really important. I mean really really important
+				
+				</p>
+			</div>
+
+		</div>
 	
 </div>
 
-<!-- Chart Customization -->
-
 <div id="tabs-2" style="height: 300px">
 		<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-		
+		<div> 
+		<p style="font-size:60%;margin-left: 15px; margin-top: 15px">
+				
+				Temperature values are represented in Celsius Unit. These measurements are really important. I mean really really important
+				
+				</p>
+		</div>
 	</div>
 	<div id="tabs-3" style="height: 300px">
 		<div id="chartContainer3" style="height: 300px; width: 100%;"></div>
@@ -311,14 +326,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-	
-<!-- Map Design -->	
-	
 	<style>
 		#map {
-			
-			width: 1170px;
+			width: 900px;
 			height: 450px;
+			margin-top: 20px;
+			margin-left: 150px;
 			
 		}
 
@@ -356,7 +369,6 @@
 	
 	<script>
 
-<!-- Map Pluto GeoJson -->
 		
 		var geojson = {
 "type": "FeatureCollection",
@@ -1461,7 +1473,138 @@
 ]
 }
 ;
-<!-- Design Map Features -->
+var geojson2 = 
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID": 6441, "SegmentID": "0022159", "street": "W 9 ST", "boro": 3.000000, "fromstreet": "SMITH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/07\/01", "moddate": "2009\/07\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 984063.018800005316734, 185399.600400000810623 ], [ 984429.828999996185303, 185270.181400001049042 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6491, "SegmentID": "0022104", "street": "LORRAINE ST", "boro": 3.000000, "fromstreet": "SMITH ST", "tostreet": "COURT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 984085.082399994134903, 184329.458199992775917 ], [ 984431.151199996471405, 184203.44140000641346 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6492, "SegmentID": "0021847", "street": "BAY ST", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "III", "instdate": "2010\/06\/01", "moddate": "2010\/06\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 983911.598600000143051, 183853.799799993634224 ], [ 984260.187000006437302, 183732.349999994039536 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6493, "SegmentID": "0021698", "street": "BAY ST", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982405.331799998879433, 184396.731800004839897 ], [ 982841.101999998092651, 184236.715599998831749 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6494, "SegmentID": "0021702", "street": "BAY ST", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982841.101999998092651, 184236.715599998831749 ], [ 983350.762999996542931, 184050.30859999358654 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6495, "SegmentID": "0021853", "street": "BAY ST", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983350.762999996542931, 184050.30859999358654 ], [ 983911.598600000143051, 183853.799799993634224 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6496, "SegmentID": "0021626", "street": "BAY ST", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981936.189199998975, 184577.085800006985664 ], [ 982405.331799998879433, 184396.731800004839897 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6497, "SegmentID": "9001326", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982166.382400006055832, 185211.420200005173683 ], [ 982111.093600004911423, 185060.736399993300438 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6498, "SegmentID": "9001302", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982428.162799999117851, 185935.562600001692772 ], [ 982384.937399998307228, 185811.748999997973442 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6499, "SegmentID": "9001323", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982237.994599997997284, 185407.863000005483627 ], [ 982191.812000006437302, 185280.725999996066093 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6500, "SegmentID": "9001309", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982307.210800006985664, 185597.602799996733665 ], [ 982289.182600006461143, 185548.528600007295609 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6501, "SegmentID": "9001299", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982449.380400002002716, 185996.337999999523163 ], [ 982439.558400005102158, 185968.203799992799759 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6502, "SegmentID": "9001300", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982439.558400005102158, 185968.203799992799759 ], [ 982433.907600000500679, 185952.017599999905 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6503, "SegmentID": "9001301", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982433.907600000500679, 185952.017599999905 ], [ 982428.162799999117851, 185935.562600001692772 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6504, "SegmentID": "9001303", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982384.937399998307228, 185811.748999997973442 ], [ 982366.886999994516373, 185760.046000003814697 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6505, "SegmentID": "9001304", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982366.886999994516373, 185760.046000003814697 ], [ 982348.005400002002716, 185708.648800000548363 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6506, "SegmentID": "9001305", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982348.005400002002716, 185708.648800000548363 ], [ 982340.334800004959106, 185687.768800005316734 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6507, "SegmentID": "9001306", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982340.334800004959106, 185687.768800005316734 ], [ 982327.321799993515015, 185652.346200004220009 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6508, "SegmentID": "9001307", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982327.321799993515015, 185652.346200004220009 ], [ 982316.133799999952, 185621.891800001263618 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6509, "SegmentID": "9001308", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982316.133799999952, 185621.891800001263618 ], [ 982307.210800006985664, 185597.602799996733665 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6510, "SegmentID": "9001310", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982289.182600006461143, 185548.528600007295609 ], [ 982281.043999999761581, 185526.375200003385544 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6511, "SegmentID": "9001313", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982281.043999999761581, 185526.375200003385544 ], [ 982272.838599994778633, 185503.786200001835823 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6512, "SegmentID": "9001314", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982272.838599994778633, 185503.786200001835823 ], [ 982265.01240000128746, 185482.24099999666214 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6513, "SegmentID": "9001316", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982265.01240000128746, 185482.24099999666214 ], [ 982258.433799996972084, 185464.13060000538826 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6514, "SegmentID": "9001318", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982258.433799996972084, 185464.13060000538826 ], [ 982247.822200000286102, 185434.917400002479553 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6515, "SegmentID": "9001319", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982247.822200000286102, 185434.917400002479553 ], [ 982237.994599997997284, 185407.863000005483627 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6516, "SegmentID": "9001324", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982191.812000006437302, 185280.725999996066093 ], [ 982180.047999992966652, 185248.664399996399879 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6517, "SegmentID": "9001325", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 982180.047999992966652, 185248.664399996399879 ], [ 982166.382400006055832, 185211.420200005173683 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6518, "SegmentID": "0021703", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "II", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Curbside", "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 982111.093600004911423, 185060.736399993300438 ], [ 982022.39640000462532, 184820.359599992632866 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6519, "SegmentID": "0021696", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "III", "instdate": "2009\/08\/01", "moddate": "2009\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982022.39640000462532, 184820.359599992632866 ], [ 981936.189199998975, 184577.085800006985664 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6520, "SegmentID": "0021625", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "COLUMBIA ST ESPLANADE", "onoffst": "ON", "allclasses": "II,III", "instdate": "2007\/08\/01", "moddate": "2010\/07\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981936.189199998975, 184577.085800006985664 ], [ 981856.635399997234344, 184346.298800006508827 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6521, "SegmentID": "0021623", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "COLUMBIA ST ESPLANADE", "onoffst": "ON", "allclasses": "II", "instdate": "2010\/07\/01", "moddate": "2010\/07\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Standard", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 981856.635399997234344, 184346.298800006508827 ], [ 981758.049799993634224, 184092.650999993085861 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6522, "SegmentID": "0021620", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "COLUMBIA ST ESPLANADE", "onoffst": "ON", "allclasses": "III", "instdate": "2010\/07\/01", "moddate": "2010\/07\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981758.049799993634224, 184092.650999993085861 ], [ 981717.876000002026558, 184016.165000006556511 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6523, "SegmentID": "0021624", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "COLUMBIA ST ESPLANADE", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981856.635399997234344, 184346.298800006508827 ], [ 981905.624799996614456, 184040.006799995899 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6524, "SegmentID": "0232797", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "COLUMBIA ST ESPLANADE", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981905.624799996614456, 184040.006799995899 ], [ 981633.093799993395805, 183304.211799994111061 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6525, "SegmentID": "0232803", "street": "COLUMBIA ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "COLUMBIA ST ESPLANADE", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981633.093799993395805, 183304.211799994111061 ], [ 981449.229399994015694, 182807.268399998545647 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6526, "SegmentID": "0231827", "street": "COLUMBIA ST ESPLANADE", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "RED HOOK CHNL SHL", "onoffst": "OFF", "allclasses": "I", "instdate": "1988\/01\/01", "moddate": "1988\/01\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 980257.459199994802475, 181489.166600003838539 ], [ 980292.184000000357628, 181493.087200000882149 ], [ 980317.94760000705719, 181480.765599995851517 ], [ 980641.11259999871254, 181525.571799993515015 ], [ 980814.736599996685982, 181553.015599995851517 ], [ 980978.304800003767014, 181582.144999995827675 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6527, "SegmentID": "0231830", "street": "COLUMBIA ST ESPLANADE", "boro": 3.000000, "fromstreet": "COLUMBIA ST", "tostreet": "RED HOOK CHNL SHL", "onoffst": "OFF", "allclasses": "I", "instdate": "1988\/01\/01", "moddate": "1988\/01\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 980978.304800003767014, 181582.144999995827675 ], [ 980995.044200003147125, 181587.576199993491173 ], [ 981004.555811303085648, 181591.474602745758602 ], [ 981013.38530030939728, 181596.738481299224077 ], [ 981021.337991068605334, 181603.251775644457666 ], [ 981028.238539610407315, 181610.87087817437714 ], [ 981033.934799998998642, 181619.427799999713898 ], [ 981142.817200005054474, 181933.061599999666214 ], [ 981182.50959999859333, 181997.696999996900558 ], [ 981441.268199995160103, 182702.396599993109703 ], [ 981459.921399995684624, 182780.479599997401237 ], [ 981466.057799994945526, 182793.522400006651878 ], [ 981449.229399994015694, 182807.268399998545647 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6528, "SegmentID": "0231839", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 981449.229399994015694, 182807.268399998545647 ], [ 981407.528200000524521, 182845.606000006198883 ], [ 981403.144716508919373, 182849.560602291399846 ], [ 981399.441615206073038, 182854.158520026190672 ], [ 981396.51205049327109, 182859.284089004184352 ], [ 981394.429717855295166, 182864.808371540420922 ], [ 981393.246999993920326, 182870.592399999499321 ], [ 981392.96899682644289, 182875.069067503703991 ], [ 981393.231467190431431, 182879.54667255692766 ], [ 981394.030599996447563, 182883.960199996829033 ], [ 981395.871050770510919, 182889.542954275850207 ], [ 981398.567444133688696, 182894.766350414574845 ], [ 981402.052532882778905, 182899.500118554482469 ], [ 981406.239399999380112, 182903.626200005412102 ], [ 981427.572951410431415, 182928.362230112805264 ], [ 981447.010247610043734, 182954.614527492842171 ], [ 981464.44390260707587, 182982.238055050460389 ], [ 981479.777600005269051, 183011.080200001597404 ], [ 981483.974379034130834, 183027.868155127158388 ], [ 981485.831585317151621, 183045.072781724011293 ], [ 981485.314194306265563, 183062.369622419850202 ], [ 981482.431963337818161, 183079.43248080171179 ], [ 981477.239247621502727, 183095.939573065494187 ], [ 981469.833975170389749, 183111.579596449068049 ], [ 981460.355800002813339, 183126.057600006461143 ], [ 981445.779752121656202, 183137.901712074526586 ], [ 981429.745940657681786, 183147.682358906546142 ], [ 981412.544500057585537, 183155.222558094770648 ], [ 981394.486693208920769, 183160.385868498880882 ], [ 981375.899279086501338, 183163.078859170724172 ], [ 981357.118599995970726, 183163.25280000269413 ], [ 981346.139244901365601, 183162.178239852219122 ], [ 981335.278999999165535, 183160.240199998021126 ], [ 981316.63400000333786, 183153.248199999332428 ], [ 981292.550799995660782, 183141.595200002193451 ], [ 981285.742431824794039, 183140.906964404683094 ], [ 981278.916762013570406, 183141.394588253053371 ], [ 981272.275371157098562, 183143.043670688726706 ], [ 981266.014397591468878, 183145.80550982200657 ], [ 981260.318744895397685, 183149.598541031242348 ], [ 981255.35662118496839, 183154.310745788068743 ], [ 981251.274571469868533, 183159.802959869062761 ], [ 981248.193149781087413, 183165.912983254005667 ], [ 981246.203358882572502, 183172.460370333457831 ], [ 981245.363962711417116, 183179.251758958474966 ], [ 981245.699750919709913, 183186.086580950854113 ], [ 981247.200806768378243, 183192.762985426845262 ], [ 981249.822799995541573, 183199.083800002932549 ], [ 981262.915399998426437, 183217.126599997282028 ], [ 981270.62279999256134, 183228.475199997425079 ], [ 981273.726079043350182, 183234.523102628678316 ], [ 981276.049799993634224, 183240.911200001835823 ], [ 981277.828013188554905, 183249.409013689612038 ], [ 981278.229827780276537, 183258.081581053033005 ], [ 981277.244981756899506, 183266.707411908631912 ], [ 981274.898627269896679, 183275.066209684620844 ], [ 981271.250688268337399, 183282.944497612828854 ], [ 981266.394330091192387, 183290.141070748330094 ], [ 981260.453580101951957, 183296.47213457711041 ], [ 981253.580160132143646, 183301.775998975586845 ], [ 981245.949611631687731, 183305.917207642341964 ], [ 981237.756812485866249, 183308.789997539861361 ], [ 981229.210999995470047, 183310.320999994874001 ], [ 981061.731000006198883, 183304.939400002360344 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6529, "SegmentID": "0231843", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 981028.846799999475479, 183600.61540000140667 ], [ 980968.197999998927116, 183724.437800005078316 ], [ 980726.24439999461174, 183807.889400005340576 ], [ 980701.040800005197525, 183829.172399997711182 ], [ 980653.434200003743172, 183783.24600000679493 ], [ 980428.282800003886223, 183974.792600005865097 ], [ 980417.081400007009506, 184064.965200006961823 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6530, "SegmentID": "0231844", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 980417.081400007009506, 184064.965200006961823 ], [ 980314.586999997496605, 184159.058200001716614 ], [ 980313.466800004243851, 184183.141599997878075 ], [ 980662.955599993467331, 184577.43639999628067 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6531, "SegmentID": "0231845", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 980662.955599993467331, 184577.43639999628067 ], [ 980699.1858000010252, 184618.192800000309944 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6532, "SegmentID": "0231848", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 981068.867599993944168, 183514.220599994063377 ], [ 981633.093799993395805, 183304.211799994111061 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6533, "SegmentID": "0231849", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 981061.731000006198883, 183304.939400002360344 ], [ 981044.928599998354912, 183444.398800000548363 ], [ 981068.867599993944168, 183514.220599994063377 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6534, "SegmentID": "0231850", "street": "IKEA GREENWAY", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2008\/06\/01", "moddate": "2008\/06\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 981068.867599993944168, 183514.220599994063377 ], [ 981071.812399998307228, 183522.809599995613098 ], [ 981028.846799999475479, 183600.61540000140667 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6535, "SegmentID": "0021609", "street": "HALLECK ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "COLUMBIA ST", "onoffst": "ON", "allclasses": "II", "instdate": "2010\/07\/01", "moddate": "2010\/07\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Curbside", "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 981196.872999995946884, 184187.375200003385544 ], [ 981717.876000002026558, 184016.165000006556511 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6536, "SegmentID": "0021607", "street": "BEARD ST", "boro": 3.000000, "fromstreet": "VAN BRUNT ST", "tostreet": "OSTEGO ST", "onoffst": "ON", "allclasses": "II", "instdate": "2010\/07\/01", "moddate": "2010\/07\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Curbside", "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 981196.872999995946884, 184187.375200003385544 ], [ 980798.916999995708466, 184522.889200001955032 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6537, "SegmentID": "0021751", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982224.30859999358654, 187792.269400000572205 ], [ 982051.986200004816055, 187598.75280000269413 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6538, "SegmentID": "0021667", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981703.965200006961823, 187209.337599992752075 ], [ 981530.36319999396801, 187015.505999997258186 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6539, "SegmentID": "0161903", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982567.99719999730587, 188186.289399996399879 ], [ 982523.513999998569489, 188128.597599998116493 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6540, "SegmentID": "0021558", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 980490.706599995493889, 185851.56139999628067 ], [ 980317.222599998116493, 185657.778999999165535 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6541, "SegmentID": "0161904", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982523.513999998569489, 188128.597599998116493 ], [ 982491.814600005745888, 188092.888999998569489 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6542, "SegmentID": "0021746", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982051.986200004816055, 187598.75280000269413 ], [ 981877.721399992704391, 187404.320800006389618 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6543, "SegmentID": "0161905", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982491.814600005745888, 188092.888999998569489 ], [ 982458.806199997663498, 188055.703999996185303 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6544, "SegmentID": "0021662", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981530.36319999396801, 187015.505999997258186 ], [ 981357.679800003767014, 186822.10079999268055 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6545, "SegmentID": "0021555", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 980143.879800006747246, 185463.842399999499321 ], [ 979971.390000000596046, 185269.9912 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6546, "SegmentID": "0161906", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982458.806199997663498, 188055.703999996185303 ], [ 982397.88120000064373, 187987.072200000286102 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6547, "SegmentID": "0021669", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981877.721399992704391, 187404.320800006389618 ], [ 981703.965200006961823, 187209.337599992752075 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6548, "SegmentID": "0021646", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981010.443000003695488, 186433.712599992752075 ], [ 980837.19200000166893, 186240.412400007247925 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6549, "SegmentID": "0021574", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 980664.114999994635582, 186046.259200006723404 ], [ 980490.706599995493889, 185851.56139999628067 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6550, "SegmentID": "0021579", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 980837.19200000166893, 186240.412400007247925 ], [ 980664.114999994635582, 186046.259200006723404 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6551, "SegmentID": "0021753", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 982397.88120000064373, 187987.072200000286102 ], [ 982224.30859999358654, 187792.269400000572205 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6552, "SegmentID": "0021648", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981183.818599998950958, 186627.439199998975 ], [ 981010.443000003695488, 186433.712599992752075 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6553, "SegmentID": "0021650", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 981357.679800003767014, 186822.10079999268055 ], [ 981183.818599998950958, 186627.439199998975 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6554, "SegmentID": "0021557", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "BEARD ST", "tostreet": "SUMMIT ST", "onoffst": "ON", "allclasses": "III", "instdate": "2014\/04\/30", "moddate": "2014\/04\/30", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 980317.222599998116493, 185657.778999999165535 ], [ 980143.879800006747246, 185463.842399999499321 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6556, "SegmentID": "0021789", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "SUMMIT ST", "tostreet": "UNION ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2013\/11\/05", "moddate": "2013\/11\/05", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 982636.036799997091293, 188350.995399996638298 ], [ 982596.879999995231628, 188244.000799998641014 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6557, "SegmentID": "0021785", "street": "VAN BRUNT ST", "boro": 3.000000, "fromstreet": "SUMMIT ST", "tostreet": "UNION ST", "onoffst": "OFF", "allclasses": "I", "instdate": "2013\/11\/05", "moddate": "2013\/11\/05", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Greenway", "tf_facilit": "Greenway" }, "geometry": { "type": "LineString", "coordinates": [ [ 982596.879999995231628, 188244.000799998641014 ], [ 982567.99719999730587, 188186.289399996399879 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6561, "SegmentID": "0161897", "street": "SUMMIT ST", "boro": 3.000000, "fromstreet": "VAN BRUNT ST", "tostreet": "IMLAY ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 982388.169799998402596, 188336.041400000452995 ], [ 982464.934799998998642, 188268.232999995350838 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6562, "SegmentID": "0161898", "street": "SUMMIT ST", "boro": 3.000000, "fromstreet": "VAN BRUNT ST", "tostreet": "IMLAY ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 982464.934799998998642, 188268.232999995350838 ], [ 982567.99719999730587, 188186.289399996399879 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6563, "SegmentID": "0105827", "street": "IMLAY ST", "boro": 3.000000, "fromstreet": "SUMMIT ST", "tostreet": "VERONA ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 982388.169799998402596, 188336.041400000452995 ], [ 982343.018999993801117, 188289.492799997329712 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6564, "SegmentID": "0021747", "street": "IMLAY ST", "boro": 3.000000, "fromstreet": "SUMMIT ST", "tostreet": "VERONA ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 982044.443599998950958, 187951.35699999332428 ], [ 981698.276199996471405, 187564.054800003767014 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6565, "SegmentID": "0021665", "street": "IMLAY ST", "boro": 3.000000, "fromstreet": "SUMMIT ST", "tostreet": "VERONA ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 981698.276199996471405, 187564.054800003767014 ], [ 981351.13120000064373, 187175.879600003361702 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6566, "SegmentID": "0105828", "street": "IMLAY ST", "boro": 3.000000, "fromstreet": "SUMMIT ST", "tostreet": "VERONA ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 982343.018999993801117, 188289.492799997329712 ], [ 982044.443599998950958, 187951.35699999332428 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6567, "SegmentID": "0021660", "street": "IMLAY STREET", "boro": 3.000000, "fromstreet": "VERONA STREET", "tostreet": "PIONEER STREET", "onoffst": "OFF", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sidewalk", "tf_facilit": "Sidewalk" }, "geometry": { "type": "LineString", "coordinates": [ [ 981351.13120000064373, 187175.879600003361702 ], [ 981004.980399996042252, 186787.622600004076958 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6568, "SegmentID": "0021647", "street": "PIONEER STREET", "boro": 3.000000, "fromstreet": "IMLAY STREET", "tostreet": "CONOVER STREET", "onoffst": "OFF", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sidewalk", "tf_facilit": "Sidewalk" }, "geometry": { "type": "LineString", "coordinates": [ [ 981004.980399996042252, 186787.622600004076958 ], [ 980851.178200006484985, 186934.134800001978874 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6569, "SegmentID": "0021580", "street": "CONOVER ST", "boro": 3.000000, "fromstreet": "PIONEER ST", "tostreet": "SULLIVAN ST", "onoffst": "ON", "allclasses": "I", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Protected Path", "tf_facilit": "Protected Path" }, "geometry": { "type": "LineString", "coordinates": [ [ 980851.178200006484985, 186934.134800001978874 ], [ 980670.883399993181229, 186737.061599999666214 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6570, "SegmentID": "0021576", "street": "CONOVER ST", "boro": 3.000000, "fromstreet": "PIONEER ST", "tostreet": "SULLIVAN ST", "onoffst": "ON", "allclasses": "II", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 980670.883399993181229, 186737.061599999666214 ], [ 980497.793200001120567, 186543.25959999859333 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6571, "SegmentID": "0021577", "street": "KING ST", "boro": 3.000000, "fromstreet": "CONOVER ST", "tostreet": "FERRIS ST", "onoffst": "ON", "allclasses": "II", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Standard", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 980670.883399993181229, 186737.061599999666214 ], [ 980255.651199996471405, 187103.937600001692772 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6572, "SegmentID": "0021572", "street": "SULLIVAN STREET", "boro": 3.000000, "fromstreet": "CONOVER STREET", "tostreet": "FERRIS STREET", "onoffst": "on", "allclasses": "II", "instdate": "2013\/09\/25", "moddate": "2013\/09\/25", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 980497.793200001120567, 186543.25959999859333 ], [ 980081.150199994444847, 186917.189199998975 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6573, "SegmentID": "0021566", "street": "FERRIS ST", "boro": 3.000000, "fromstreet": "KING ST", "tostreet": "VAN DYKE ST", "onoffst": "ON", "allclasses": "III", "instdate": "1900\/01\/01", "moddate": "1900\/01\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Signed Route", "tf_facilit": "Signed Route" }, "geometry": { "type": "LineString", "coordinates": [ [ 980081.150199994444847, 186917.189199998975 ], [ 979907.67620000243187, 186723.019600003957748 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6574, "SegmentID": "0018002", "street": "FERRIS ST", "boro": 3.000000, "fromstreet": "KING ST", "tostreet": "VAN DYKE ST", "onoffst": "ON", "allclasses": "III", "instdate": "1900\/01\/01", "moddate": "1900\/01\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Signed Route", "tf_facilit": "Signed Route" }, "geometry": { "type": "LineString", "coordinates": [ [ 979734.458000004291534, 186528.886199995875359 ], [ 979561.456400007009506, 186335.441799998283386 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6575, "SegmentID": "0018003", "street": "FERRIS ST", "boro": 3.000000, "fromstreet": "KING ST", "tostreet": "VAN DYKE ST", "onoffst": "ON", "allclasses": "III", "instdate": "1900\/01\/01", "moddate": "1900\/01\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Signed Route", "tf_facilit": "Signed Route" }, "geometry": { "type": "LineString", "coordinates": [ [ 979907.67620000243187, 186723.019600003957748 ], [ 979734.458000004291534, 186528.886199995875359 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6576, "SegmentID": "0018000", "street": "FERRIS ST", "boro": 3.000000, "fromstreet": "KING ST", "tostreet": "VAN DYKE ST", "onoffst": "ON", "allclasses": "III", "instdate": "1900\/01\/01", "moddate": "1900\/01\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Signed Route", "tf_facilit": "Signed Route" }, "geometry": { "type": "LineString", "coordinates": [ [ 979561.456400007009506, 186335.441799998283386 ], [ 979386.437000006437302, 186142.646799996495247 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6577, "SegmentID": "0021583", "street": "FERRIS ST", "boro": 3.000000, "fromstreet": "KING ST", "tostreet": "DIKEMAN ST", "onoffst": "ON", "allclasses": "III", "instdate": "1900\/01\/01", "moddate": "1900\/01\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Signed Route", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 980255.651199996471405, 187103.937600001692772 ], [ 980081.150199994444847, 186917.189199998975 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6578, "SegmentID": "0022083", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2010\/06\/01", "moddate": "2010\/06\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 984344.520799994468689, 183968.261600002646446 ], [ 984260.187000006437302, 183732.349999994039536 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6579, "SegmentID": "0022123", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 984431.151199996471405, 184203.44140000641346 ], [ 984344.520799994468689, 183968.261600002646446 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6580, "SegmentID": "0022124", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984431.151199996471405, 184203.44140000641346 ], [ 984482.548800006508827, 184191.223600000143051 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6581, "SegmentID": "0022103", "street": "COURT ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984085.082399994134903, 184329.458199992775917 ], [ 984000.55179999768734, 184095.449599996209145 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6582, "SegmentID": "0021860", "street": "COURT ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "2", "lanecount": 2.000000, "ft_facilit": "Sharrows", "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 984000.55179999768734, 184095.449599996209145 ], [ 983911.598600000143051, 183853.799799993634224 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6583, "SegmentID": "0022105", "street": "COURT ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984171.758799999952, 184564.398800000548363 ], [ 984085.082399994134903, 184329.458199992775917 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6590, "SegmentID": "0022109", "street": "COURT ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984228.904200002551079, 184718.627399995923042 ], [ 984171.758799999952, 184564.398800000548363 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6591, "SegmentID": "0161922", "street": "MILL STREET", "boro": 3.000000, "fromstreet": "CLINTON ST", "tostreet": "HAMILTON AVE", "onoffst": "ON", "allclasses": "III", "instdate": "2013\/11\/19", "moddate": "2013\/11\/19", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 983801.730000004172325, 185228.5608000010252 ], [ 984025.568000003695488, 185151.966399997472763 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6592, "SegmentID": null, "street": "MILL STREET", "boro": 3.000000, "fromstreet": "CLINTON ST", "tostreet": "HAMILTON AVE", "onoffst": "ON", "allclasses": "III", "instdate": "2013\/11\/19", "moddate": "2013\/11\/19", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984025.568000003695488, 185151.966399997472763 ], [ 984075.715599998831749, 185133.337799996137619 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6593, "SegmentID": null, "street": "MILL STREET", "boro": 3.000000, "fromstreet": "CLINTON ST", "tostreet": "HAMILTON AVE", "onoffst": "ON", "allclasses": "III", "instdate": "2013\/11\/19", "moddate": "2013\/11\/19", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984075.715599998831749, 185133.337799996137619 ], [ 984125.144600003957748, 185113.105000004172325 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6594, "SegmentID": null, "street": "MILL STREET", "boro": 3.000000, "fromstreet": "CLINTON ST", "tostreet": "HAMILTON AVE", "onoffst": "ON", "allclasses": "III", "instdate": "2013\/11\/19", "moddate": "2013\/11\/19", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984151.207599997520447, 185104.473199993371964 ], [ 984212.214599996805191, 185083.55120000243187 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6595, "SegmentID": null, "street": "MILL STREET", "boro": 3.000000, "fromstreet": "CLINTON ST", "tostreet": "HAMILTON AVE", "onoffst": "ON", "allclasses": "III", "instdate": "2013\/11\/19", "moddate": "2013\/11\/19", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984125.144600003957748, 185113.105000004172325 ], [ 984151.207599997520447, 185104.473199993371964 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6597, "SegmentID": "0022163", "street": "GARNET STREET", "boro": 3.000000, "fromstreet": "HAMILTON AVE", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "II", "instdate": "2013\/11\/19", "moddate": "2013\/11\/19", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Curbside", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984212.214599996805191, 185083.55120000243187 ], [ 984344.12720000743866, 185034.748799994587898 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6599, "SegmentID": "0021854", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "BUSH ST", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 983442.721599996089935, 184298.841600000858307 ], [ 983350.762999996542931, 184050.30859999358654 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6600, "SegmentID": "0021856", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "BUSH ST", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 983526.530399993062019, 184534.858199998736382 ], [ 983442.721599996089935, 184298.841600000858307 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6601, "SegmentID": "0021858", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BAY ST", "tostreet": "BUSH ST", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Standard" }, "geometry": { "type": "LineString", "coordinates": [ [ 983613.81360000371933, 184773.545200005173683 ], [ 983526.530399993062019, 184534.858199998736382 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6602, "SegmentID": "9006818", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983716.159199997782707, 184999.237000003457069 ], [ 983666.092199996113777, 184858.487200006842613 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6603, "SegmentID": "0188798", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983886.519800007343292, 185470.525600001215935 ], [ 983882.687800005078316, 185456.601600006222725 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6604, "SegmentID": "9006786", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983860.807199999690056, 185393.257200002670288 ], [ 983801.730000004172325, 185228.5608000010252 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6605, "SegmentID": "9006792", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983780.133399993181229, 185170.682799994945526 ], [ 983716.159199997782707, 184999.237000003457069 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6606, "SegmentID": "0188797", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983891.910199999809265, 185487.841800004243851 ], [ 983886.519800007343292, 185470.525600001215935 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6608, "SegmentID": "0147537", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983640.923199996352196, 184787.731600001454353 ], [ 983613.81360000371933, 184773.545200005173683 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6610, "SegmentID": "0188796", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983907.855000004172325, 185528.773399993777275 ], [ 983891.910199999809265, 185487.841800004243851 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6611, "SegmentID": "0147531", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983882.687800005078316, 185456.601600006222725 ], [ 983879.059200003743172, 185444.141000002622604 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6612, "SegmentID": "0194391", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983928.258599996566772, 185584.12100000679493 ], [ 983907.855000004172325, 185528.773399993777275 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6613, "SegmentID": "9006785", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983879.059200003743172, 185444.141000002622604 ], [ 983860.807199999690056, 185393.257200002670288 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6614, "SegmentID": "9006790", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983801.730000004172325, 185228.5608000010252 ], [ 983794.394999995827675, 185208.903200000524521 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6615, "SegmentID": "9006791", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983794.394999995827675, 185208.903200000524521 ], [ 983780.133399993181229, 185170.682799994945526 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6616, "SegmentID": "9006822", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983654.018399998545647, 184824.545000001788139 ], [ 983640.923199996352196, 184787.731600001454353 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6617, "SegmentID": "9006820", "street": "CLINTON ST", "boro": 3.000000, "fromstreet": "BUSH ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983666.092199996113777, 184858.487200006842613 ], [ 983654.018399998545647, 184824.545000001788139 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6618, "SegmentID": "0021887", "street": "HAMILTON AV", "boro": 3.000000, "fromstreet": "HUNTINGTON ST", "tostreet": "W 9 ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/07\/01", "moddate": "2007\/07\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Sharrows" }, "geometry": { "type": "LineString", "coordinates": [ [ 983964.790600001811981, 185712.286799997091293 ], [ 984063.018800005316734, 185399.600400000810623 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6648, "SegmentID": "0162034", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "SCHERMERHORN ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2010\/06\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 984577.791400000452995, 184313.290399998426437 ], [ 984551.590599998831749, 184279.281200006604195 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6650, "SegmentID": "0162032", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "SCHERMERHORN ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2010\/06\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 984532.269800007343292, 184254.806199997663498 ], [ 984509.402400001883507, 184225.574000000953674 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6651, "SegmentID": "0162035", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "SCHERMERHORN ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2010\/06\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 984551.590599998831749, 184279.281200006604195 ], [ 984532.269800007343292, 184254.806199997663498 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 6654, "SegmentID": "0162033", "street": "SMITH ST", "boro": 3.000000, "fromstreet": "SCHERMERHORN ST", "tostreet": "HAMILTON AV", "onoffst": "ON", "allclasses": "II", "instdate": "2007\/08\/01", "moddate": "2010\/06\/01", "comments": null, "bikedir": "L", "lanecount": 1.000000, "ft_facilit": null, "tf_facilit": "Curbside" }, "geometry": { "type": "LineString", "coordinates": [ [ 984509.402400001883507, 184225.574000000953674 ], [ 984482.548800006508827, 184191.223600000143051 ] ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 12580, "SegmentID": "0021861", "street": "CREAMER ST", "boro": 3.000000, "fromstreet": "COURT ST", "tostreet": "SMITH ST", "onoffst": "ON", "allclasses": "III", "instdate": "2007\/08\/01", "moddate": "2007\/08\/01", "comments": null, "bikedir": "R", "lanecount": 1.000000, "ft_facilit": "Sharrows", "tf_facilit": null }, "geometry": { "type": "LineString", "coordinates": [ [ 984000.55179999768734, 184095.449599996209145 ], [ 984344.520799994468689, 183968.261600002646446 ] ] } }
+]
+};
+
+
+
+
 
 L.stamp = function (obj) {
     console.log(obj);
@@ -1496,6 +1639,11 @@ L.control.layers({
 	'Map Pluto': L.geoJson(geojson, {style: style,
 			onEachFeature: onEachFeature
     }).addTo(map),
+	'Bike Lane': L.geoJson(geojson2, {style: style,
+			onEachFeature: onEachFeature
+    }).addTo(map),
+	
+	
 	
 },
 
@@ -1602,14 +1750,11 @@ L.marker([40.679140, -74.012249]).bindPopup('Pioneer Works').addTo(map);
 L.marker([40.678250, -74.017315]).bindPopup('Tech Lab').addTo(map);
 
 </script>
-<!-- Required js libraries  -->
 
 <link href="jquery-ui.min.css" rel="stylesheet" />
 <script type="text/javascript" src="jquery-2.1.1.js"></script>
 <script type="text/javascript" src="jquery-ui.min.js"></script>
 <script type="text/javascript" src="jquery.canvasjs.min.js"></script>
-
-<!-- Chart Components -->
 <script type="text/javascript">
 $(function () {
 	
@@ -1692,9 +1837,9 @@ $(function () {
         labelFontSize: 12,
 		titleFontSize: 16,
 		title: "Temperature (Celsius)",
-		interval: 5,
-		minimum: 20,
-        maximum: 55,
+		interval: 10,
+		minimum: 10,
+        maximum: 60,
 		
 		tickColor: "azure",
       }
@@ -1767,13 +1912,12 @@ $(function () {
 		interval: 1,    // change interval to 1 for showing all the dates
         intervalType: "day",
 		labelAngle: 0,
-		title: "(Click on Sensors to Show/Hide Values)",
-		titleFontSize: 11,
 		valueFormatString: "MMM DD",
       },
          axisY: {
         labelFontSize: 12,
 		titleFontSize: 16,
+		title: "Temperature (Celsius)",
 		title: "Humidity (Percentage)",
       }
 	};
@@ -1844,18 +1988,16 @@ var options3 = {
 		
 		],
       axisX: {
-        labelFontSize: 12,
+        labelFontSize: 9,
 		interval: 1,    // change interval to 1 for showing all the dates
         intervalType: "day",
 		labelAngle: 0,
-		title: "(Click on Sensors to Show/Hide Values)",
-		titleFontSize: 11,
-		valueFormatString: "MMM DD",
+		valueFormatString: "MMM DD HH",
       },
          axisY: {
         labelFontSize: 12,
 		titleFontSize: 16,
-		title: "Pressure(Pascal)",
+		title: "Pressure (Pascal)",
 		minimum: 100500,
         maximum: 103000,
 		interval: 500,
@@ -1929,18 +2071,16 @@ var options4 = {
 		
 		],
       axisX: {
-        labelFontSize: 12,
+        labelFontSize: 9,
 		interval: 1,    // change interval to 1 for showing all the dates
         intervalType: "day",
-		title: "(Click on Sensors to Show/Hide Values)",
-		titleFontSize: 11,
 		labelAngle: 0,
-		valueFormatString: "MMM DD",
+		valueFormatString: "MMM DD HH",
       },
          axisY: {
         labelFontSize: 12,
 		titleFontSize: 16,
-		title: "Luminosity (Lux)",
+		title: "Lux (Pascal)",
 		
       }
 	};
@@ -2011,18 +2151,16 @@ var options5 = {
 		
 		],
       axisX: {
-        labelFontSize: 12,
+        labelFontSize: 9,
 		interval: 1,    // change interval to 1 for showing all the dates
         intervalType: "day",
-		title: "(Click on Sensors to Show/Hide Values)",
-		titleFontSize: 11,
 		labelAngle: 0,
-		valueFormatString: "MMM DD",
+		valueFormatString: "MMM DD HH",
       },
          axisY: {
         labelFontSize: 12,
-		titleFontSize: 12,
-		title: "Dust Concentration (>1 micron per 0.01 cubic feet)",
+		titleFontSize: 16,
+		title: "Dust (Pascal)",
 	
 		
       }
@@ -2096,18 +2234,16 @@ var options6 = {
 		
 		],
       axisX: {
-        labelFontSize: 12,
+        labelFontSize: 9,
 		interval: 1,    // change interval to 1 for showing all the dates
         intervalType: "day",
-		title: "(Click on Sensors to Show/Hide Values)",
-		titleFontSize: 11,
 		labelAngle: 0,
-		valueFormatString: "MMM DD",
+		valueFormatString: "MMM DD HH",
       },
          axisY: {
         labelFontSize: 12,
 		titleFontSize: 16,
-		title: "Noise (dB)",
+		title: "Dust (Pascal)",
 		minimum: 50,
         maximum: 100,
 		interval: 10
