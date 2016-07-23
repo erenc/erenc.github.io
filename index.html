@@ -1506,7 +1506,7 @@ L.control.layers({
 
 		// get color depending on population density value
 		function getColor(d) {
-			return d == 'One &Two Family Buildings' ?  '#FFFF00' :
+			return d == 'One &Two Family Buildingsss' ?  '#FFFF00' :
 			       d == 'Multi-Family Walk-Up Buildings'  ? '#00FFFF' :
 			       d == 'Multi-Family Elevator Buildings'  ? '#ADD8E6' :
 			       d == 'Mixed Residential & Commercial Buildings'  ? '#34282C' :
@@ -1527,6 +1527,7 @@ L.control.layers({
 				color: 'white',
 				dashArray: '3',
 				fillOpacity: 0.7,
+				align:'left',
 				fillColor: getColor(feature.properties.landuse)
 			};
 		}
