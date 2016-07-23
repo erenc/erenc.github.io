@@ -99,9 +99,7 @@
                 </div>
             </div>
             <div class="row text-center" >
-			<h3 class="section-subheading text-muted">
-			Traditionally, community development projects have inherently been based on qualitative decisions and opinions and are the product of complex history and social standing. This focus on qualitative methods for understanding neighborhoods have largely been necessary because of a lack of ability to obtain adequately granular quantitative information about neighborhoods. In an attempt to remedy this issue and provide for a greater range of quantitative information about neighborhoods, this project explored introducing local environmental sensors to Red Hook, Brooklyn. This project seeks to understand whether installing local environmental sensors, in conjunction with previously existing data, is a viable and useful metric for assisting in understanding neighborhood dynamics and is useful for making localized decisions.
-			</h3>
+			<h3 class="section-subheading text-muted">Quantifying a community is a crucial issue and it is important to measure it regarding to livable conditions of the society.  This project aims to define and drive research of how micro-geography sensor data can be leveraged to explore neighborhood dynamics. In this perspective, Red Hook Area is selected for implementing the idea of Quantifying Community with the sensors</h3>
 					
             </div>
         </div>
@@ -110,7 +108,7 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
-        z<div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Measurements</h2>
@@ -125,8 +123,7 @@
 
 <strong>Dust</strong> consist of particles concentration present in air, per unit volume.<br>
 
-<strong>Noise</strong> Is the the measure of loudness, or intensity of environmental sound.
-					</h3>
+<strong>Noise</strong> Is the the measure of loudness, or intensity of environmental sound. </h3>
                 </div>
             </div>
             <div class="row">
@@ -176,8 +173,13 @@
 		
 	</div>
 	</div>
-<h3 class="text-muted text-center"><strong>Sensor Locations and Land Use Map</strong></h3>
-<section id="map">   
+
+
+	
+	<h3 class="text-muted text-center"><strong>Sensor Locations and Land Use Map</strong></h3>
+                
+<section id="map"> 
+  
 <div id="map"></div>
 	</div>
 
@@ -206,7 +208,7 @@
         </div>
     </section>
 <br></br>
-     <!-- Team Section -->
+    <!-- Team Section -->
     <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -223,21 +225,12 @@
                         <p class="text-muted">Boss</p>
                         
                     </div>			
-            </div>
-			
-			<div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Nicholas Johnson</h4>
-                        <p class="text-muted">Boss</p>
-                        
-                    </div>			
-            </div>
+                </div>
 				
 				<div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Jonathan Grundy</h4>
+                        <h4>Nicholas Johnson</h4>
                         <p class="text-muted">Baby Bear</p>
                         
                     </div>
@@ -248,14 +241,22 @@
 				<div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/11.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Eren Con</h4>
+                        <h4>Jonathan Grundy</h4>
                         <p class="text-muted">Bald Eagle</p>
                         
                     </div>
 					
                 </div>
 				
-				
+				 <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
+                        <h4><strong>Eren Con</h4>
+                        <p class="text-muted">Baby Bear</p>
+                        
+                    </div>
+					
+                </div>
 				
 				<div class="col-sm-4">
                     <div class="team-member">
@@ -294,7 +295,10 @@
                     </div>
 					
                 </div>
-			
+               
+				
+		
+				
 				<div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
@@ -1712,6 +1716,7 @@ $(function () {
 		{
 		showInLegend: true,
 		legendText: "Sensor 3",
+		
 		type: "line", //change it to line, area, bar, pie, etc
 			dataPoints: [
 			{ x: new Date(2016,5,21,0,00), y: 30.7223888889},{ x: new Date(2016,5,21,1,00), y: 30.4361666667},{ x: new Date(2016,5,21,2,00), y: 30.0356111111},{ x: new Date(2016,5,21,3,00), y: 29.9269722222},{ x: new Date(2016,5,21,4,00), y: 29.5640277778},{ x: new Date(2016,5,21,5,00), y: 29.3228888889},{ x: new Date(2016,5,21,6,00), y: 29.0418333333},{ x: new Date(2016,5,21,7,00), y: 28.9878055556},{ x: new Date(2016,5,21,8,00), y: 28.8714444444},{ x: new Date(2016,5,21,9,00), y: 29.2416944444},{ x: new Date(2016,5,21,10,00), y: 30.2563333333},{ x: new Date(2016,5,21,11,00), y: 31.3961111111},{ x: new Date(2016,5,21,12,00), y: 32.7072222222},{ x: new Date(2016,5,21,13,00), y: 36.2225555556},{ x: new Date(2016,5,21,14,00), y: 38.6770277778},{ x: new Date(2016,5,21,15,00), y: 40.4020277778},{ x: new Date(2016,5,21,16,00), y: 37.1395},{ x: new Date(2016,5,21,17,00), y: 35.0860555556},{ x: new Date(2016,5,21,18,00), y: 34.4542777778},{ x: new Date(2016,5,21,19,00), y: 33.3057777778},{ x: new Date(2016,5,21,20,00), y: 32.5458055556},{ x: new Date(2016,5,21,21,00), y: 31.8327777778},{ x: new Date(2016,5,21,22,00), y: 31.4843055556},{ x: new Date(2016,5,21,23,00), y: 31.2133333333},{ x: new Date(2016,5,22,0,00), y: 30.9875},{ x: new Date(2016,5,22,1,00), y: 31.0375833333},{ x: new Date(2016,5,22,2,00), y: 30.4791111111},{ x: new Date(2016,5,22,3,00), y: 29.7210555556},{ x: new Date(2016,5,22,4,00), y: 28.3181944444},{ x: new Date(2016,5,22,5,00), y: 28.4197777778},{ x: new Date(2016,5,22,6,00), y: 28.17525},{ x: new Date(2016,5,22,7,00), y: 28.1926388889},{ x: new Date(2016,5,22,8,00), y: 29.0051388889},{ x: new Date(2016,5,22,9,00), y: 29.4545555556},{ x: new Date(2016,5,22,10,00), y: 30.5286111111},{ x: new Date(2016,5,22,11,00), y: 31.7371944444},{ x: new Date(2016,5,22,12,00), y: 32.6158055556},{ x: new Date(2016,5,22,13,00), y: 34.7506388889},{ x: new Date(2016,5,22,14,00), y: 34.737},{ x: new Date(2016,5,22,15,00), y: 35.1958611111},{ x: new Date(2016,5,22,16,00), y: 35.77525},{ x: new Date(2016,5,22,17,00), y: 35.3686944444},{ x: new Date(2016,5,22,18,00), y: 33.9588333333},{ x: new Date(2016,5,22,19,00), y: 33.1315277778},{ x: new Date(2016,5,22,20,00), y: 32.2706388889},{ x: new Date(2016,5,22,21,00), y: 31.9312222222},{ x: new Date(2016,5,22,22,00), y: 31.7130555556},{ x: new Date(2016,5,22,23,00), y: 31.5335},{ x: new Date(2016,5,23,0,00), y: 30.7635555556},{ x: new Date(2016,5,23,1,00), y: 30.2521666667},{ x: new Date(2016,5,23,2,00), y: 29.7876666667},{ x: new Date(2016,5,23,3,00), y: 29.3165},{ x: new Date(2016,5,23,4,00), y: 29.7027777778},{ x: new Date(2016,5,23,5,00), y: 29.1175},{ x: new Date(2016,5,23,6,00), y: 28.3858611111},{ x: new Date(2016,5,23,7,00), y: 28.2875555556},{ x: new Date(2016,5,23,8,00), y: 29.1121944444},{ x: new Date(2016,5,23,9,00), y: 29.9087777778},{ x: new Date(2016,5,23,10,00), y: 30.4303611111},{ x: new Date(2016,5,23,11,00), y: 30.8540555556},{ x: new Date(2016,5,23,12,00), y: 31.4088333333},{ x: new Date(2016,5,23,13,00), y: 33.0602222222},{ x: new Date(2016,5,23,14,00), y: 35.2574927954},{ x: new Date(2016,5,23,15,00), y: 34.2109444444},{ x: new Date(2016,5,23,16,00), y: 34.9698333333},{ x: new Date(2016,5,23,17,00), y: 32.8816388889},{ x: new Date(2016,5,23,18,00), y: 31.8671111111},{ x: new Date(2016,5,23,19,00), y: 30.8409166667},{ x: new Date(2016,5,23,20,00), y: 29.8438611111},{ x: new Date(2016,5,23,21,00), y: 29.37625},{ x: new Date(2016,5,23,22,00), y: 29.5708611111},{ x: new Date(2016,5,23,23,00), y: 29.1258055556},{ x: new Date(2016,5,24,0,00), y: 28.9460555556},{ x: new Date(2016,5,24,1,00), y: 28.6672777778},{ x: new Date(2016,5,24,2,00), y: 28.0676666667},{ x: new Date(2016,5,24,3,00), y: 28.3492222222},{ x: new Date(2016,5,24,4,00), y: 28.1059444444},{ x: new Date(2016,5,24,5,00), y: 27.8276666667},{ x: new Date(2016,5,24,6,00), y: 27.5489444444},{ x: new Date(2016,5,24,7,00), y: 27.5550555556},{ x: new Date(2016,5,24,8,00), y: 28.1035277778},{ x: new Date(2016,5,24,9,00), y: 28.6007777778},{ x: new Date(2016,5,24,10,00), y: 29.6683611111},{ x: new Date(2016,5,24,11,00), y: 30.7520555556},{ x: new Date(2016,5,24,12,00), y: 32.34975},{ x: new Date(2016,5,24,13,00), y: 34.6079444444},{ x: new Date(2016,5,24,14,00), y: 34.6187222222},{ x: new Date(2016,5,24,15,00), y: 34.7119166667},{ x: new Date(2016,5,24,16,00), y: 35.4384444444},{ x: new Date(2016,5,24,17,00), y: 33.6099444444},{ x: new Date(2016,5,24,18,00), y: 31.3686666667},{ x: new Date(2016,5,24,19,00), y: 30.1079722222},{ x: new Date(2016,5,24,20,00), y: 28.7543055556},{ x: new Date(2016,5,24,21,00), y: 28.5462222222},{ x: new Date(2016,5,24,22,00), y: 28.4232777778},{ x: new Date(2016,5,24,23,00), y: 28.2185},{ x: new Date(2016,5,25,0,00), y: 27.9073055556},{ x: new Date(2016,5,25,1,00), y: 27.67225},{ x: new Date(2016,5,25,2,00), y: 27.1612777778},{ x: new Date(2016,5,25,3,00), y: 26.5243333333},{ x: new Date(2016,5,25,4,00), y: 26.1430277778},{ x: new Date(2016,5,25,5,00), y: 25.8109166667},{ x: new Date(2016,5,25,6,00), y: 25.9416944444},{ x: new Date(2016,5,25,7,00), y: 26.34375},{ x: new Date(2016,5,25,8,00), y: 27.0861666667},{ x: new Date(2016,5,25,9,00), y: 28.0934166667},{ x: new Date(2016,5,25,10,00), y: 28.7701944444},{ x: new Date(2016,5,25,11,00), y: 29.5758055556},{ x: new Date(2016,5,25,12,00), y: 29.9227222222},{ x: new Date(2016,5,25,13,00), y: 33.6013055556},{ x: new Date(2016,5,25,14,00), y: 35.7825555556},{ x: new Date(2016,5,25,15,00), y: 36.3146388889},{ x: new Date(2016,5,25,16,00), y: 36.7343055556},{ x: new Date(2016,5,25,17,00), y: 34.9372777778},{ x: new Date(2016,5,25,18,00), y: 31.7561388889},{ x: new Date(2016,5,25,19,00), y: 30.74125},{ x: new Date(2016,5,25,20,00), y: 29.1733055556},{ x: new Date(2016,5,25,21,00), y: 28.3911944444},{ x: new Date(2016,5,25,22,00), y: 27.8793888889},{ x: new Date(2016,5,25,23,00), y: 27.3336944444},{ x: new Date(2016,5,26,0,00), y: 27.30975},{ x: new Date(2016,5,26,1,00), y: 27.5240555556},{ x: new Date(2016,5,26,2,00), y: 27.3816388889},{ x: new Date(2016,5,26,3,00), y: 26.6178888889},{ x: new Date(2016,5,26,4,00), y: 26.3707222222},{ x: new Date(2016,5,26,5,00), y: 26.2458055556},{ x: new Date(2016,5,26,6,00), y: 26.4013888889},{ x: new Date(2016,5,26,7,00), y: 26.6550833333},{ x: new Date(2016,5,26,8,00), y: 27.3775555556},{ x: new Date(2016,5,26,9,00), y: 28.5336388889},{ x: new Date(2016,5,26,10,00), y: 29.9736111111},{ x: new Date(2016,5,26,11,00), y: 31.4556666667},{ x: new Date(2016,5,26,12,00), y: 32.4533055556},{ x: new Date(2016,5,26,13,00), y: 34.6032777778},{ x: new Date(2016,5,26,14,00), y: 35.5626666667},{ x: new Date(2016,5,26,15,00), y: 35.04675},{ x: new Date(2016,5,26,16,00), y: 35.5993611111},{ x: new Date(2016,5,26,17,00), y: 34.52375},{ x: new Date(2016,5,26,18,00), y: 31.9201111111},{ x: new Date(2016,5,26,19,00), y: 31.2649444444},{ x: new Date(2016,5,26,20,00), y: 30.6576111111},{ x: new Date(2016,5,26,21,00), y: 30.3819722222},{ x: new Date(2016,5,26,22,00), y: 30.0791944444},{ x: new Date(2016,5,26,23,00), y: 29.5966111111},{ x: new Date(2016,5,27,0,00), y: 28.9046944444},{ x: new Date(2016,5,27,1,00), y: 28.1581666667},{ x: new Date(2016,5,27,2,00), y: 27.41875},{ x: new Date(2016,5,27,3,00), y: 26.8839444444},{ x: new Date(2016,5,27,4,00), y: 26.3997222222},{ x: new Date(2016,5,27,5,00), y: 25.9946388889},{ x: new Date(2016,5,27,6,00), y: 25.8949444444},{ x: new Date(2016,5,27,7,00), y: 26.3019722222},{ x: new Date(2016,5,27,8,00), y: 26.9634166667},{ x: new Date(2016,5,27,9,00), y: 27.9884444444},{ x: new Date(2016,5,27,10,00), y: 28.9759383754},{ x: new Date(2016,5,27,11,00), y: 30.4988333333},{ x: new Date(2016,5,27,12,00), y: 31.5735555556},{ x: new Date(2016,5,27,13,00), y: 34.1421388889},{ x: new Date(2016,5,27,14,00), y: 34.9596100279},{ x: new Date(2016,5,27,15,00), y: 34.1409444444},{ x: new Date(2016,5,27,16,00), y: 33.1291666667},{ x: new Date(2016,5,27,17,00), y: 32.7547075209},{ x: new Date(2016,5,27,18,00), y: 30.7178333333},{ x: new Date(2016,5,27,19,00), y: 29.9863055556},{ x: new Date(2016,5,27,20,00), y: 29.0199166667},{ x: new Date(2016,5,27,21,00), y: 28.3761944444},{ x: new Date(2016,5,27,22,00), y: 27.95575},{ x: new Date(2016,5,27,23,00), y: 27.4877222222},{ x: new Date(2016,5,28,0,00), y: 26.3338055556},{ x: new Date(2016,5,28,1,00), y: 25.8007222222},{ x: new Date(2016,5,28,2,00), y: 26.1409722222},{ x: new Date(2016,5,28,3,00), y: 26.1658611111},{ x: new Date(2016,5,28,4,00), y: 26.2383611111},{ x: new Date(2016,5,28,5,00), y: 26.3158611111},{ x: new Date(2016,5,28,6,00), y: 26.0361944444},{ x: new Date(2016,5,28,7,00), y: 25.42625},{ x: new Date(2016,5,28,8,00), y: 25.7805277778},{ x: new Date(2016,5,28,9,00), y: 26.5346944444},{ x: new Date(2016,5,28,10,00), y: 27.1118333333},{ x: new Date(2016,5,28,11,00), y: 27.4918611111},{ x: new Date(2016,5,28,12,00), y: 27.5089166667},{ x: new Date(2016,5,28,13,00), y: 27.9688333333},{ x: new Date(2016,5,28,14,00), y: 30.5163611111},{ x: new Date(2016,5,28,15,00), y: 31.0775833333},{ x: new Date(2016,5,28,16,00), y: 30.8778333333},{ x: new Date(2016,5,28,17,00), y: 29.4800557103},{ x: new Date(2016,5,28,18,00), y: 28.59875},{ x: new Date(2016,5,28,19,00), y: 28.0267222222},{ x: new Date(2016,5,28,20,00), y: 27.5557777778},{ x: new Date(2016,5,28,21,00), y: 27.3433333333},{ x: new Date(2016,5,28,22,00), y: 27.6858055556},{ x: new Date(2016,5,28,23,00), y: 27.4313888889},{ x: new Date(2016,5,29,0,00), y: 27.0858055556},{ x: new Date(2016,5,29,1,00), y: 26.9811944444},{ x: new Date(2016,5,29,2,00), y: 26.9941388889},{ x: new Date(2016,5,29,3,00), y: 26.3766111111},{ x: new Date(2016,5,29,4,00), y: 26.1551111111},{ x: new Date(2016,5,29,5,00), y: 25.7941111111},{ x: new Date(2016,5,29,6,00), y: 25.7827777778},{ x: new Date(2016,5,29,7,00), y: 25.7520277778},{ x: new Date(2016,5,29,8,00), y: 26.39625},{ x: new Date(2016,5,29,9,00), y: 27.2843055556},{ x: new Date(2016,5,29,10,00), y: 28.9841388889},{ x: new Date(2016,5,29,11,00), y: 29.3583577713},{ x: new Date(2016,5,29,12,00), y: 30.4688333333},{ x: new Date(2016,5,29,13,00), y: 33.4460833333},{ x: new Date(2016,5,29,14,00), y: 35.7711666667},{ x: new Date(2016,5,29,15,00), y: 35.2868333333},{ x: new Date(2016,5,29,16,00), y: 36.9034166667},{ x: new Date(2016,5,29,17,00), y: 36.8343888889},{ x: new Date(2016,5,29,18,00), y: 33.4829722222},{ x: new Date(2016,5,29,19,00), y: 32.0190833333},{ x: new Date(2016,5,29,20,00), y: 30.8890277778},{ x: new Date(2016,5,29,21,00), y: 30.0966388889},{ x: new Date(2016,5,29,22,00), y: 29.4848055556},{ x: new Date(2016,5,29,23,00), y: 28.8988055556},{ x: new Date(2016,5,30,0,00), y: 28.2280277778},{ x: new Date(2016,5,30,1,00), y: 27.7174722222},{ x: new Date(2016,5,30,2,00), y: 27.585},{ x: new Date(2016,5,30,3,00), y: 26.8899722222},{ x: new Date(2016,5,30,4,00), y: 26.6611388889},{ x: new Date(2016,5,30,5,00), y: 26.1814722222},{ x: new Date(2016,5,30,6,00), y: 25.8836666667},{ x: new Date(2016,5,30,7,00), y: 25.6485555556},{ x: new Date(2016,5,30,8,00), y: 26.7088611111},{ x: new Date(2016,5,30,9,00), y: 27.8229722222},{ x: new Date(2016,5,30,10,00), y: 28.9616111111},{ x: new Date(2016,5,30,11,00), y: 30.0128888889},{ x: new Date(2016,5,30,12,00), y: 31.3168611111},{ x: new Date(2016,5,30,13,00), y: 34.3730277778},{ x: new Date(2016,5,30,14,00), y: 37.3575},{ x: new Date(2016,5,30,15,00), y: 38.8191944444},{ x: new Date(2016,5,30,16,00), y: 39.3708333333},{ x: new Date(2016,5,30,17,00), y: 36.0549444444},{ x: new Date(2016,5,30,18,00), y: 33.3463055556},{ x: new Date(2016,5,30,19,00), y: 32.6700555556},{ x: new Date(2016,5,30,20,00), y: 31.5564166667},{ x: new Date(2016,5,30,21,00), y: 30.23325},{ x: new Date(2016,5,30,22,00), y: 30.0063888889},{ x: new Date(2016,5,30,23,00), y: 29.8744444444}]
